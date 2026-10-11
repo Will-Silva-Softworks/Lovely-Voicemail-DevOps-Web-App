@@ -19,6 +19,21 @@ The deployment lifecycle is fully automated via GitHub Actions, prioritizing sec
 - **Pipeline Health:** Suppressed legacy dependency warnings (DEP0169) and optimized workflow execution steps to consistently achieve passing build metrics.
 - **Infrastructure as Code:** All cloud resources (networking, compute, storage) are codified in Terraform, allowing for ephemeral environment recreation and drift detection.
 
+### Configure GitHub Actions OIDC for AWS
+
+The root [`main.tf`](./main.tf) creates the GitHub Actions OIDC identity provider and a role trusted only by this repository. The role is attached to AWS's managed `AdministratorAccess-AWSElasticBeanstalk` policy.
+
+Apply it from the repository root using AWS credentials authorized to manage IAM:
+
+```bash
+terraform init
+terraform plan
+terraform apply
+terraform output -raw github_actions_role_arn
+```
+
+Save the output as the `AWS_ROLE_TO_ASSUME` GitHub Actions secret. The workflow should request an OIDC token with `id-token: write` permission and pass that secret to `aws-actions/configure-aws-credentials` with region `us-east-1`. Keep Terraform state secure because it records infrastructure details.
+
 ## 🚀 Local Development Quickstart
 
 1. **Clone & Configure:**

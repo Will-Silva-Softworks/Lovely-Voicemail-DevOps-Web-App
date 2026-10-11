@@ -42,6 +42,9 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
 
     steps:
     - name: Checkout code
@@ -52,16 +55,13 @@ jobs:
       with:
         python-version: '3.9'
 
-    - name: Install AWS CLI and EB CLI
-      run: |
-        pip install awscli
-        pip install awsebcli
     - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v1
+      id: aws-credentials
+      uses: aws-actions/configure-aws-credentials@v4
       with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ secrets.AWS_REGION }}
+        role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+        aws-region: us-east-1
+        output-credentials: true
 
     - name: Generate deployment package
       run: zip -r deploy.zip . -x '*.git*'
@@ -69,11 +69,12 @@ jobs:
     - name: Deploy to EB
       uses: einaregilsson/beanstalk-deploy@v22
       with:
-        aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws_access_key: ${{ steps.aws-credentials.outputs.aws-access-key-id }}
+        aws_secret_key: ${{ steps.aws-credentials.outputs.aws-secret-access-key }}
+        aws_session_token: ${{ steps.aws-credentials.outputs.aws-session-token }}
         application_name: lovely_voicemail_server
         environment_name: init-env 
         version_label: app-240731_212428824536
-        region: ${{ secrets.AWS_REGION }}
+        region: us-east-1
         deployment_package: deploy.zip
         use_existing_version_if_available: true
