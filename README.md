@@ -53,5 +53,3 @@ Voicemail Audio Guest Book – a delightful way to capture and relive the heartf
 - **Easy Extraction:** Audio files are isolated and easily transferred to a PC/Mac via USB-C.
 
 ---
-
-I have removed the outer code box entirely. You can now highlight from the top header (`# ☎️ Lovely Voicemail`) all the way down to `</details>` and copy it directly into your editor. I also ensured the raw GitHub URL is correctly placed in the clone command.
