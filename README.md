@@ -1,81 +1,34 @@
-Lovely Voice Mail
+# ☎️ Lovely Voicemail | Cloud Infrastructure & CI/CD Pipeline
 
-![Lovely Voice Mail](https://i.etsystatic.com/isla/fbb946/67999264/isla_500x500.67999264_5u6h369i.jpg?version=0)
+[![CI/CD Pipeline](https://img.shields.io/github/actions/workflow/status/WillSilvaSoftWorks/lovely_voicemail/deploy.yml?branch=main&label=CI%2FCD)](#)
+[![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=flat&logo=docker&logoColor=white)](#)
+[![Terraform](https://img.shields.io/badge/terraform-%235835CC.svg?style=flat&logo=terraform&logoColor=white)](#)
+[![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=flat&logo=amazon-aws&logoColor=white)](#)
 
+Lovely Voicemail is a containerized web application that processes and stores audio recordings captured from physical IoT guestbook phones. Originally built as a proprietary production system, this repository demonstrates modern deployment pipelines, Infrastructure as Code (IaC), and secure cloud integration.
 
-Welcome to Lovely Voice Mail, a passion project designed to bring a touch of nostalgia and warmth to your special events. This is a vintage voicemail audio guest book that allows you to capture and relive heartfelt messages from your loved ones.
+## 🏗️ System Architecture
 
-About This Item
-❗❗This is not a rental phone, you will 100% own this phone.
+_(Insert a link to your architecture diagram here, e.g., `![Architecture](./docs/architecture.png)`)_
 
-When you purchase the phone, you can:
-✔️ Have access to all voicemail files.
-✔️ Re-use the phone for multiple events.
-✔️ Record your personal greeting message.
-✔️ Have everything you need to set up the phone in the package.
+- **Traffic Routing:** AWS Route 53 pointing to an Application Load Balancer.
+- **Compute:** Multi-stage Docker containers running on AWS ECS (or EC2).
+- **Storage:** Persistent audio payload storage utilizing AWS S3.
+- **Infrastructure Provisioning:** Automated state management via Terraform.
 
-🎉 Introducing... Voicemail Audio Guest Book – a delightful way to capture and relive the heartfelt messages of your loved ones on any special occasion! 🎊
+## ⚙️ DevOps & Pipeline Automation
 
-🎁 What's Included in the Package:
-Vintage Voicemail Audio Guest Book Phone
-Free Guest Sign stand in a floating gold frame
-5 AA batteries to power the phone
-USB-C cable for transferring voicemail files to PC/Mac
-8GB MicroSD card (up to 8000 mins of audio files storage)
-User guide for easy setup
-Customer service and 24/7 support
-Listen to a Real Guest Voicemail Example.
+The deployment lifecycle is fully automated via GitHub Actions, prioritizing security and zero-downtime deployments.
 
-Explore more Audio Guest Book models and accessories on our Etsy Store.
+- **Secure Authentication:** Hardcoded AWS access keys were replaced with OpenID Connect (OIDC) via `aws-actions/configure-aws-credentials`, ensuring temporary, automatically rotated security tokens.
+- **Pipeline Health:** Suppressed legacy dependency warnings (DEP0169) and optimized workflow execution steps to consistently achieve passing build metrics.
+- **Infrastructure as Code:** All cloud resources (networking, compute, storage) are codified in Terraform, allowing for ephemeral environment recreation and drift detection.
 
-📜 What is a Voicemail Guest Book?
-This one-of-a-kind vintage audio guest book is designed to preserve the warmth and sincerity of your special day. Your favorite people can simply pick up the phone, record their lovely messages to you, put down the phone, and their voicemails are recorded on the phone. After the event, simply use the data transfer cable to transfer the beautiful messages to your computer.
+## 🚀 Local Development Quickstart
 
-💖 Key Features:
-Greeting Messages: Record your greeting messages before your event, just like voicemail greetings on your phone, to welcome your guests.
-High-Quality Audio: Capture every nuance of laughter, tears, and well-wishes in crystal-clear audio quality. The high-fidelity recording ensures you'll cherish these moments for years.
-Free Guest Sign: The product comes with a golden Guest sign (instruction) stand designed by ourselves! No need to spend additional money on guest signs.
-Easy to Extract the Audio Files: All voicemails will be recorded on the 8GB SD card as individual audio files. Simply use the data transfer cable to transfer the files to your computer.
-Vintage Designs: Beautiful vintage phone adds a touch of elegance and nostalgia to your event!
-📦 Shipping and Handling:
-We offer free shipping to the US and international shipping to Canada. We recommend booking the audio guest book at least 3-4 weeks before your event to ensure timely delivery and setup.
-
-✨ Make your special moments unforgettable with our Voicemail Audio Guest Book. Order now and create lasting memories that resonate for a lifetime! ✨
-Welcome to Lovely Voice Mail, a passion project designed to bring a touch of nostalgia and warmth to your special events. This is a vintage voicemail audio guest book that allows you to capture and relive heartfelt messages from your loved ones.
-
-About This Item
-❗❗This is not a rental phone, you will 100% own this phone.
-
-When you purchase the phone, you can:
-✔️ Have access to all voicemail files.
-✔️ Re-use the phone for multiple events.
-✔️ Record your personal greeting message.
-✔️ Have everything you need to set up the phone in the package.
-
-🎉 Introducing... Voicemail Audio Guest Book – a delightful way to capture and relive the heartfelt messages of your loved ones on any special occasion! 🎊
-
-🎁 What's Included in the Package:
-Vintage Voicemail Audio Guest Book Phone
-Free Guest Sign stand in a floating gold frame
-5 AA batteries to power the phone
-USB-C cable for transferring voicemail files to PC/Mac
-8GB MicroSD card (up to 8000 mins of audio files storage)
-User guide for easy setup
-Customer service and 24/7 support
-Listen to a Real Guest Voicemail Example.
-
-Explore more Audio Guest Book models and accessories on our Etsy Store.
-
-📜 What is a Voicemail Guest Book?
-This one-of-a-kind vintage audio guest book is designed to preserve the warmth and sincerity of your special day. Your favorite people can simply pick up the phone, record their lovely messages to you, put down the phone, and their voicemails are recorded on the phone. After the event, simply use the data transfer cable to transfer the beautiful messages to your computer.
-
-💖 Key Features:
-Greeting Messages: Record your greeting messages before your event, just like voicemail greetings on your phone, to welcome your guests.
-High-Quality Audio: Capture every nuance of laughter, tears, and well-wishes in crystal-clear audio quality. The high-fidelity recording ensures you'll cherish these moments for years.
-Free Guest Sign: The product comes with a golden Guest sign (instruction) stand designed by ourselves! No need to spend additional money on guest signs.
-Easy to Extract the Audio Files: All voicemails will be recorded on the 8GB SD card as individual audio files. Simply use the data transfer cable to transfer the files to your computer.
-Vintage Designs: Beautiful vintage phone adds a touch of elegance and nostalgia to your event!
-📦 Shipping and Handling:
-We offer free shipping to the US and international shipping to Canada. We recommend booking the audio guest book at least 3-4 weeks before your event to ensure timely delivery and setup.
-
-✨ Make your special moments unforgettable with our Voicemail Audio Guest Book. Order now and create lasting memories that resonate for a lifetime! ✨
+1. **Clone & Configure:**
+   ```bash
+   git clone [https://github.com/WillSilvaSoftWorks/Lovely-Voicemail-DevOps-Web-App.git](https://github.com/WillSilvaSoftWorks/Lovely-Voicemail-DevOps-Web-App.git)
+   cd Lovely-Voicemail-DevOps-Web-App
+   cp .env.example .env
+   ```
