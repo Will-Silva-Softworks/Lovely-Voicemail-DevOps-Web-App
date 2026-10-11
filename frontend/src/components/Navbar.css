@@ -1,0 +1,226 @@
+/* Navbar styling */
+.nav-bar {
+    position: absolute; /* Stays at the top of the viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /* Space between logo/title and links */
+    align-items: center;
+    background-color: rgba(255, 182, 193, 0); /* Slightly translucent pink background */
+    z-index: 1001; /* Above other elements */
+    transition: background-color 0.3s ease;
+    border-radius: 0px 0px 5px 5px;
+    margin-top: 5vh;
+}
+
+/* Logo and title container */
+.navbar-logo-title {
+    display: flex;
+    align-items: center;
+    margin-top: 1vh;
+}
+
+/* Logo styling */
+.navbar-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 15px;
+    margin-left: 10vw;
+    border: 3px solid #FFB6C1;
+}
+
+/* Title styling */
+.navbar-title {
+    color: white;
+    font-family: 'Dancing Script', cursive;
+    font-size: 36px;
+}
+
+/* Drawer open styles */
+.drawer-open .navbar-title {
+    color: black;
+}
+
+.drawer-open .menuButton div {
+    background-color: black;
+}
+
+/* Desktop links styling */
+.nav-links {
+    list-style-type: none;
+    display: flex; /* Flexbox for horizontal layout */
+    margin: 0;
+    padding: 0;
+    z-index: 1001; /* Above drawer */
+    margin-right: 10vw;
+}
+
+.nav-links li {
+    margin-right: 30px;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: grey;
+}
+
+/* Mobile Drawer Menu (hamburger icon) */
+.menuButton {
+    font-size: 28px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: none; /* Hidden by default, visible on mobile */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    z-index: 1005;
+    transition: color 0.3s ease;
+    margin-right: 8%;
+    padding: 0px;
+}
+
+.menuButton div {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+.menuButton.active .bar1 {
+    transform: rotate(45deg) translate(8px, 5px);
+}
+
+.menuButton.active .bar2 {
+    opacity: 0;
+}
+
+.menuButton.active .bar3 {
+    transform: rotate(-45deg) translate(9px, -5px);
+}
+
+/* Drawer Menu (for mobile) */
+.drawer {
+    position: absolute; /* Fix the drawer below the navbar */
+    top: 100%; /* Start right below the navbar */
+    left: 0;
+    width: 100%; /* Ensure drawer fits the viewport width */
+    background-color: #FFB6C1;
+    z-index: 999; /* Drawer below the navbar */
+    display: none;
+    transition: all 0.3s ease;
+    margin-top: 0px;
+    border-radius: 0px 0px 30px 30px;
+    overflow-x: hidden; /* Prevent any horizontal overflow */
+}
+
+.drawer.open {
+    display: block;
+    margin-top: 0;
+}
+
+.drawer-nav-links {
+    list-style: none;
+    padding: 1;
+}
+
+.drawer-nav-links li {
+    margin-bottom: 15px;
+    
+}
+
+.drawer-nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+    
+}
+
+.drawer-nav-links li a:hover {
+    color: grey;
+}
+
+.navbar.drawer-open{
+    position:sticky;
+    background-color: rgb(248, 248, 248);
+    margin-bottom: 0;
+    border-radius: 5px;
+
+}
+
+html, body {
+    overflow-x: hidden; /* Prevent horizontal scroll on the entire page */
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+    
+    .menuButton{
+        display: flex; /* Show the hamburger menu on mobile */
+        z-index: 2006;
+        margin-right: 10%;
+        color: black;
+    }
+    .menuButton div {
+        width: 100%;
+        background-color: white;
+        transition: all 0.3s ease;
+    }
+
+
+    .nav-bar.drawer-open{
+        position:sticky;
+        background-color: white;
+        color: white;
+        width: 100%;
+        margin-top: 0;
+        margin-bottom: 0;
+    
+    }
+
+    .nav-bar {
+        background-color: rgb(0,0,0,0);
+        margin-top: 5vh;
+        
+    }
+
+    .navbar-title {
+        color: white;
+        font-family: 'Dancing Script', cursive;
+        font-size: 30px;
+        margin-left: 2vw;
+    }
+
+    .navbar-logo {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        margin: 2vw;
+        border: 3px solid #FFB6C1;
+    }
+
+    .nav-links {
+        display: none; /* Hide links on mobile */
+    }
+}
+
+@media (min-width: 769px) {
+    .nav-links {
+        display: flex; /* Show links on desktop */
+    }
+}
+
+
+

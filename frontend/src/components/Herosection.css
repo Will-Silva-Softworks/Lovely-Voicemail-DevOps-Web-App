@@ -1,0 +1,50 @@
+/* Hero content styling */
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: white; /* White text */
+    padding-top: 200px; /* Space from the top */
+    font-family: 'Poppins', sans-serif; /* Font family */
+    margin-bottom: 160px;
+    transition: transform 0.3s ease; /* Smooth transition when drawer opens */
+    width: 100%;
+}
+
+/* Title styling */
+.hero-content h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    font-family: 'Dancing Script', sans-serif;
+}
+
+/* Description text styling */
+.hero-content p {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+/* Button styling */
+.hero-button {
+    background-color: #853844; /* Pink color */
+    color: #9d5bb9;
+    border: none;
+    padding: 10px 25px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Button hover effect */
+.hero-button:hover {
+    background-color: #ff1493; /* Darker pink on hover */
+    transform: scale(1.05);
+}
+
+/* Push HeroSection down when the drawer opens */
+.drawer-open.hero-content {
+    transform: translateY(80px); /* Moves the HeroSection down by 200px */
+    margin-bottom: 0px;
+}
+
