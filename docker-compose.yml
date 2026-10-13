@@ -1,15 +1,14 @@
-version: '3.8'
-
 services:
   backend:
     build: ./backend
     ports:
-      - '5001:5001'
-    env_file:
-      - .env
+      - "5001:5001"
+    restart: always
 
   frontend:
     build: ./frontend
     ports:
-      - '3000:3000'
-
+      - "80:3000"
+    depends_on:
+      - backend
+    restart: always
