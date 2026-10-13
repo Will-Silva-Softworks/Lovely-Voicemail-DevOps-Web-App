@@ -1,12 +1,12 @@
 services:
   backend:
-    build: ./backend
+    image: wsilva1/lovely_voicemail_backend:latest
     ports:
       - "5001:5001"
     restart: always
 
   frontend:
-    build: ./frontend
+    image: wsilva1/lovely_voicemail_frontend:latest
     ports:
       - "80:3000"
     depends_on:
