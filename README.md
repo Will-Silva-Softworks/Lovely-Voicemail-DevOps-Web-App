@@ -48,5 +48,6 @@ docker-compose up --build
 ```
 
 Your local will be up at http://localhost:8080.
+Test
 
 ---
