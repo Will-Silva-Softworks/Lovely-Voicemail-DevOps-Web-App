@@ -1,4 +1,4 @@
-10.44 Will be used used a sample webapp for future home lab creation
+Welcome
 Hi Welcome, this project was originally a website created for an e-commerce business called Lovely Voice Mail.
 It was in use as is the version contained in this repository. Currently not active use project.
 This open-source repository serves as a learning environment for DevOps knowledge. That goes with implementing Kubernetes, Docker, and CI/CD technologies etc. Helpful easy reference containing tips for first of all myself and perhaps other developers in the industry
